@@ -1,1 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christopher | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --primary: #1E3A8A;
+      --primary-dark: #162d6e;
+      --primary-light: #DBEAFE;
+      --accent: #06B6D4;
+      --accent-dark: #0891b2;
+      --accent-light: #CFFAFE;
+      --secondary: #64748B;
+      --secondary-light: #F1F5F9;
+      --text: #0F172A;
+      --text-muted: #475569;
+      --text-light: #94A3B8;
+      --surface: #ffffff;
+      --border: #E2E8F0;
+      --nav-height: 68px;
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text);
+      background-color: var(--bg);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E"),
+        repeating-linear-gradient(
+          0deg, transparent, transparent 28px,
+          rgba(30, 58, 138, 0.04) 28px,
+          rgba(30, 58, 138, 0.04) 29px
+        );
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--primary);
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      box-shadow: 0 2px 16px rgba(15, 23, 42, 0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: #fff; }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    /* ── HERO ── */
+    .hero {
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, #0F172A 0%, #1E3A8A 60%, #1d4ed8 100%);
+      background-attachment: fixed;
+      color: #fff;
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(6, 182, 212, 0.15);
+      color: #67e8f9;
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35em 1.1em;
+      border-radius: 999px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 span { color: var(--accent); font-style: italic; }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin: 0 auto 2.8rem;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block;
+      padding: 0.75em 2em;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary { background: var(--accent); color: var(--primary); }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .btn-card {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.5em 1.4em;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: var(--primary);
+      color: #fff;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-card:hover {
+      background: var(--accent);
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(6,182,212,0.3);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 0.8rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 999px;
+      margin-bottom: 2.2rem;
+    }
+
+    /* ── CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      border-radius: 8px;
+      padding: 1.6rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(30, 58, 138, 0.12);
+      border-top-color: var(--accent);
+    }
+
+    .card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+
+    .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
+
+    .tag {
+      font-size: 0.72rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.25em 0.75em;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .skill-group h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-group ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); line-height: 2.1; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      margin-top: 4rem;
+    }
+
+    /* ── LINKS ── */
+    a:link { color: var(--primary); text-decoration: none; }
+    a:visited { color: var(--secondary); }
+    a:hover, a:focus { color: var(--accent); }
+    a:active { color: var(--accent-dark); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 1.5rem;
+        height: auto;
+        min-height: var(--nav-height);
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+      }
+      .nav-links { gap: 1.2rem; flex-wrap: wrap; }
+      .nav-links a { font-size: 0.82rem; }
+      .hero { padding: 4rem 1.5rem 3.5rem; }
+      .cards-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 0.8rem 1rem; flex-direction: column; align-items: center; gap: 0.6rem; }
+      .nav-links { gap: 1rem; justify-content: center; }
+      .hero { padding: 3rem 1rem 2.5rem; }
+      .hero p { font-size: 0.95rem; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 260px; text-align: center; }
+      section { padding: 2.5rem 1rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Luarez</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="devlog.html">Devlog</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <span class="hero-tag">資訊管理學系 · 樹德科技大學</span>
+    <h1>Hi, I'm <span>Cj Luarez 鄭洛斯</span></h1>
+    <p>An Information Management student at Shu-Te University. </p>
+    <div class="hero-buttons">
+      <a href="resume.html" class="btn btn-primary">View Resume</a>
+      <a href="devlog.html" class="btn btn-outline">Read Devlog</a>
+    </div>
+  </div>
+
+  <section id="projects">
+    <h2 class="section-title">Projects 專案與作品集</h2>
+    <p class="section-subtitle">Things I've built during my studies</p>
+    <div class="divider"></div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-icon">🎲</div>
+        <h3>D&D Word Game Suite</h3>
+        <p>A fantasy-themed educational word game with four modes — Scramble, Scrying, Chamber, and Echo — powered by the Gemini API.</p>
+        <div class="card-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Gemini API</span>
+        </div>
+        <a href="https://gemini.google.com/share/8cc2d6676ce7" target="_blank" class="btn btn-card">Play Game →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧙</div>
+        <h3>D&D Linguist Game</h3>
+        <p>A language-learning game set in a D&D universe — test your vocabulary and linguistic skills through fantasy-themed challenges powered by the Gemini API.</p>
+        <div class="card-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Gemini API</span>
+        </div>
+        <a href="https://gemini.google.com/share/e38634b51954" target="_blank" class="btn btn-card">Play Game →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧱</div>
+        <h3>Dungeon Tetris</h3>
+        <p>A dungeon-themed Tetris game built with JavaScript — clear blocks, survive the dungeon, and rack up your score in this classic puzzle reimagined.</p>
+        <div class="card-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">CSS</span>
+        </div>
+        <a href="https://gemini.google.com/share/913e80456e96" target="_blank" class="btn btn-card">Play Game →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-subtitle">Software, Frameworks, and Tools</p>
+    <div class="divider"></div>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <h4>Frontend</h4>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>React</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h4>AI & APIs</h4>
+        <ul>
+          <li>Gemini API</li>
+          <li>Generative AI</li>
+          <li>Prompt Engineering</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h4>Tools</h4>
+        <ul>
+          <li>GitHub / Git</li>
+          <li>GitHub Pages</li>
+          <li>VS Code</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <ul>
+          <li>English — TOEIC 800+</li>
+          <li>Mandarin — TOCFL B1</li>
+          <li>Filipino / Cebuano</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 鄭洛斯 Cj Luarez · Shu-te University</p>
+  </footer>
+
+</body>
+</html>
