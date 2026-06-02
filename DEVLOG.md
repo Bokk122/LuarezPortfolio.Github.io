@@ -16,3 +16,6 @@
 ## 06.01.26 Monday
 **Created a new GitHub repository after identifying an error in the portfolio name and migrated the project to the correct repository. Updated and refined the resume content. Reorganized and properly structured the Skills section of the portfolio website to improve readability and presentation.** 
 
+## 06.02.26 Tuesday
+**Answered the needed information for README**
+
